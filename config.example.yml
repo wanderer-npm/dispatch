@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  secret: ""  # GitHub webhook secret — leave empty to skip signature verification
+
+routes:
+  # send all push events to this channel
+  - events: [push]
+    webhook: "https://discord.com/api/webhooks/ID/TOKEN"
+
+  # releases and repo lifecycle to a separate channel
+  - events: [release, repository]
+    webhook: "https://discord.com/api/webhooks/ID/TOKEN"
+
+  # everything else to a catch-all channel
+  - events: ["*"]
+    webhook: "https://discord.com/api/webhooks/ID/TOKEN"
